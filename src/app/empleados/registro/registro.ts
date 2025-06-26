@@ -23,10 +23,25 @@ export class Registro {
   agregar() {
     // Validaciones
     if (this.nuevo.idEmpleado <= 0) return;
-    if (this.nuevo.nombre.trim().length === 0) return;
-    if (!this.nuevo.correo) return;  // Mejor validación para correo
-    if (!this.nuevo.telefono) return;
-    if (!this.nuevo.fechaNacimiento) return;
+    if (this.nuevo.nombre.trim().length === 0){
+      console.error('El nombre no puede estar vacío');
+      return;
+    } 
+    const correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!correoRegex.test(this.nuevo.correo)) {
+        console.error('Correo electrónico inválido');
+        return;
+      }
+
+    const telefonoRegex = /^[0-9]{10}$/;
+      if (!telefonoRegex.test(this.nuevo.telefono)) {
+        console.error('Número de teléfono inválido (deben ser 10 dígitos)');
+        return;
+      }
+    if (!this.nuevo.fechaNacimiento === null) {
+      return;
+    }
+      
 
     this.empleadosService.agregarNuevoEmpleado(this.nuevo);
 
