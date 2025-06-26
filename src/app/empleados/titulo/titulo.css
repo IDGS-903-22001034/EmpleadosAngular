@@ -1,0 +1,10 @@
+.titulo {
+  border: 2px solid black;
+  border-radius: 11px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+  margin: 2%;
+}

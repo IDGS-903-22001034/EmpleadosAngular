@@ -1,0 +1,36 @@
+<div class="col">
+  <h3>Registro</h3>
+  <hr />
+
+  <table class="table table-striped table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>Número Empleado</th>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Teléfono</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Sexo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (empleado of empleados; track empleado.idEmpleado) {
+        <tr>
+          <td>{{ empleado.idEmpleado }}</td>
+          <td>{{ empleado.nombre }}</td>
+          <td>{{ empleado.correo }}</td>
+          <td>{{ empleado.telefono }}</td>
+          <td>{{ empleado.fechaNacimiento | date:'dd/MM/yyyy' }}</td>
+          <td>{{ empleado.sexo }}</td>
+          <td>
+            <app-eliminar-empleado 
+              [idEmpleado]="empleado.idEmpleado" 
+              (onEliminar)="eliminarEmpleado($event)">
+            </app-eliminar-empleado>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
